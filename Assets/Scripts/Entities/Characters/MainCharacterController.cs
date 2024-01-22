@@ -11,13 +11,11 @@ namespace Entities.Characters
         [SerializeField] private Transform _barrelSlot;
 
         private MainCharacterStateMachine _mainCharacterStateMachine;
-        private IInputHandler _inputHandler;
-        private ICoroutineRunner _coroutineRunner;
 
         public void Init(IInputHandler inputHandler, ICoroutineRunner coroutineRunner)
         {
-            _inputHandler = inputHandler;
-            _coroutineRunner = coroutineRunner;
+            _animator.Init();
+            _mainCharacterStateMachine = new MainCharacterStateMachine(_movement, _animator, coroutineRunner, inputHandler, _barrelSlot);
             _mainCharacterStateMachine.ChangeStateTo<SimpleCharacterState>();
         }
 

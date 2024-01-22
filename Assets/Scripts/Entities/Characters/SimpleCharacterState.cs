@@ -6,19 +6,30 @@ namespace Entities.Characters
 {
     public class SimpleCharacterState : IMainCharacterState
     {
+        private MainCharacterStateMachine _mainCharacterStateMachine;
         private CharacterMovement _movement;
         private CharacterAnimator _animator;
-        private MainCharacterStateMachine _mainCharacterStateMachine;
-        private Coroutine _moveCoroutine;
         private ICoroutineRunner _coroutineRunner;
         private IInputHandler _inputHandler;
 
-        public SimpleCharacterState(MainCharacterStateMachine mainCharacterStateMachine)
+        private Coroutine _moveCoroutine;
+
+        public SimpleCharacterState(
+            MainCharacterStateMachine mainCharacterStateMachine,
+            CharacterMovement movement,
+            CharacterAnimator animator,
+            ICoroutineRunner coroutineRunner,
+            IInputHandler inputHandler
+            )
         {
             _mainCharacterStateMachine = mainCharacterStateMachine;
+            _movement = movement;
+            _animator = animator;
+            _coroutineRunner = coroutineRunner;
+            _inputHandler = inputHandler;
         }
 
-        public void Enter(MainCharacterStateMachine contex)
+        public void Enter()
         {
             SetActiveMovement(true);
         }
@@ -26,6 +37,7 @@ namespace Entities.Characters
         public void Exit()
         {
             SetActiveMovement(false);
+            _animator.StopRunAnimation();
         }
 
         public void SetActiveMovement(bool active)

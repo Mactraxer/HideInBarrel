@@ -2,7 +2,7 @@
 {
     public interface IMainCharacterState
     {
-        public void Enter(MainCharacterStateMachine contex);
+        public void Enter();
         public void Exit();
         public void SetActiveMovement(bool active);
     }

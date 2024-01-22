@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Entities.Characters
 {
@@ -7,6 +6,8 @@ namespace Entities.Characters
     public class CharacterAnimator : MonoBehaviour
     {
         private readonly int RunParameter = Animator.StringToHash("Run");
+        private readonly int RunWithBarrelParameter = Animator.StringToHash("RunWithBarrel");
+        private readonly int PuttingBarrelParameter = Animator.StringToHash("PutBarrel");
 
         private Animator _animator;
 
@@ -25,9 +26,19 @@ namespace Entities.Characters
             _animator.SetBool(RunParameter, false);
         }
 
-        internal void SetPuttingBarrelAnimation()
+        public void SetPuttingBarrelAnimation()
         {
-            throw new NotImplementedException();
+            _animator.SetTrigger(PuttingBarrelParameter);
+        }
+
+        public void SetRunWithBarrelAnimation()
+        {
+            _animator.SetBool(RunWithBarrelParameter, true);
+        }
+
+        public void StopRunWithBarrelAnimation()
+        {
+            _animator.SetBool(RunWithBarrelParameter, false);
         }
     }
 }

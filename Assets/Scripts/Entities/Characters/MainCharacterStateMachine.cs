@@ -1,22 +1,30 @@
 ﻿using Entities.Areas;
+using Inputs;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Entities.Characters
 {
     public class MainCharacterStateMachine
     {
-        private Dictionary<Type, IMainCharacterState> _states;
+        private readonly Dictionary<Type, IMainCharacterState> _states;
         private IMainCharacterState _currentState;
 
         public Barrel Barrel;
 
-        public MainCharacterStateMachine()
+        public MainCharacterStateMachine(
+            CharacterMovement movement,
+            CharacterAnimator animator,
+            ICoroutineRunner coroutineRunner,
+            IInputHandler input,
+            Transform barrelSlot
+            )
         {
             _states = new Dictionary<Type, IMainCharacterState>()
             {
-                [typeof(SimpleCharacterState)] = new SimpleCharacterState(this),
-                [typeof(WithBarrelCharacterState)] = new WithBarrelCharacterState(this)
+                [typeof(SimpleCharacterState)] = new SimpleCharacterState(this, movement, animator, coroutineRunner, input),
+                [typeof(WithBarrelCharacterState)] = new WithBarrelCharacterState(this, movement, animator, coroutineRunner, input, barrelSlot)
             };
         }
 
@@ -26,7 +34,11 @@ namespace Entities.Characters
             {
                 _currentState?.Exit();
                 _currentState = state;
-                _currentState.Enter(this);
+                _currentState.Enter();
+            }
+            else
+            {
+                throw new InvalidOperationException("Failure change state to unknow state");
             }
         }
 

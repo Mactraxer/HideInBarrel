@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5261361785829007148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8792960101489086993}
+  m_Layer: 0
+  m_Name: BarrelRefPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8792960101489086993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261361785829007148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.027, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6086394338845182499}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8703211254568974288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6086394338845182499}
+  m_Layer: 0
+  m_Name: Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6086394338845182499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703211254568974288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8792960101489086993}
+  m_Father: {fileID: 5641910766349792176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1439764110252152956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,6 +225,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3906418848223990091, guid: e7c9a02bae1576344a5bd1836d743245,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6086394338845182499}
     - targetCorrespondingSourceObject: {fileID: 396492144743898755, guid: e7c9a02bae1576344a5bd1836d743245,
         type: 3}
       insertIndex: -1
@@ -175,6 +242,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5301953222146975607}
+    - targetCorrespondingSourceObject: {fileID: 4294659059224324281, guid: e7c9a02bae1576344a5bd1836d743245,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6871338619695884687}
   m_SourcePrefab: {fileID: 100100000, guid: e7c9a02bae1576344a5bd1836d743245, type: 3}
 --- !u!1 &4891970657610992194 stripped
 GameObject:
@@ -195,6 +266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 5301953222146975607}
+  _animator: {fileID: 6561835936359993461}
+  _barrelSlot: {fileID: 8792960101489086993}
 --- !u!114 &5301953222146975607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +281,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 5641910766349792176}
-  _characterAnimator: {fileID: 6561835936359993461}
   _runSpeed: 2
   _rotationSpeed: 200
+--- !u!136 &6871338619695884687
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4891970657610992194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.79
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!4 &5641910766349792176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3906418848223990091, guid: e7c9a02bae1576344a5bd1836d743245,
